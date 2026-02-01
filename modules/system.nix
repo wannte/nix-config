@@ -45,6 +45,7 @@
         NSAutomaticPeriodSubstitutionEnabled = false;
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
+        ApplePressAndHoldEnabled = false;
       };
 
       # Set F18 as input source toggle shortcut (hotkey ID 61)
