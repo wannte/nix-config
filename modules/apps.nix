@@ -36,7 +36,8 @@
 
     # `brew install`
     brews = [
-      # "aria2"  # download tool
+      "asdf"
+      "gh"
     ];
 
     # `brew install --cask`

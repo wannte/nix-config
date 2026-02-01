@@ -29,6 +29,24 @@
     defaults = {
       menuExtraClock.Show24Hour = true;  # show 24 hour clock
 
+      # Trackpad settings
+      trackpad = {
+        Clicking = true;  # tap to click
+        TrackpadThreeFingerDrag = true;  # three-finger drag
+      };
+
+      # Keyboard settings - faster typing
+      NSGlobalDomain = {
+        KeyRepeat = 2;  # faster key repeat (default: 6)
+        InitialKeyRepeat = 15;  # shorter delay before repeat (default: 25)
+
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+      };
+
       # Set F18 as input source toggle shortcut (hotkey ID 61)
       CustomUserPreferences = {
         "com.apple.symbolichotkeys" = {

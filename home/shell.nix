@@ -7,6 +7,11 @@
     '';
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   home.shellAliases = {
     k = "kubectl";
   };
