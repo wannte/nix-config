@@ -12,8 +12,37 @@
   system = {
     stateVersion = 6;
 
+    keyboard = {
+      enableKeyMapping = true;
+      userKeyMapping = [
+        {
+          HIDKeyboardModifierMappingSrc = 30064771129;  # Caps Lock
+          HIDKeyboardModifierMappingDst = 30064771296;  # Left Control
+        }
+        {
+          HIDKeyboardModifierMappingSrc = 30064771296;  # Left Control
+          HIDKeyboardModifierMappingDst = 30064771129;  # Caps Lock
+        }
+      ];
+    };
+
     defaults = {
       menuExtraClock.Show24Hour = true;  # show 24 hour clock
+
+      # Set F18 as input source toggle shortcut (hotkey ID 61)
+      CustomUserPreferences = {
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            "61" = {
+              enabled = true;
+              value = {
+                type = "standard";
+                parameters = [ 65535 79 0 ];  # F18
+              };
+            };
+          };
+        };
+      };
 
       # other macOS's defaults configuration.
       # ......
