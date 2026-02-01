@@ -35,6 +35,16 @@
         TrackpadThreeFingerDrag = true;  # three-finger drag
       };
 
+      # Dock settings
+      dock = {
+        autohide = true;
+        orientation = "bottom";
+        showhidden = true;
+        mineffect = "scale";
+        mru-spaces = false;
+        show-recents = false;
+      };
+
       # Keyboard settings - faster typing
       NSGlobalDomain = {
         KeyRepeat = 2;  # faster key repeat (default: 6)
