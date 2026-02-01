@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # utils
-    jq # A lightweight and flexible command-line JSON processor
+    jq
     git
-    gh # GitHub CLI
+    gh
+
+    uv
 
     awscli2
     saml2aws
@@ -13,7 +14,6 @@
     kubectx
     kubernetes-helm
 
-    # version manager
     asdf-vm
   ];
 }
