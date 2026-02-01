@@ -16,9 +16,7 @@
   # But on macOS, it's less stable than homebrew.
   #
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
-  environment.systemPackages = with pkgs; [
-    git
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
@@ -27,18 +25,8 @@
 
     onActivation = {
       autoUpdate = false;
-      # 'zap': uninstalls all formulae(and related files) not listed here.
-      # cleanup = "zap";
+      cleanup = "zap";  # uninstalls all formulae(and related files) not listed here
     };
-
-    taps = [
-    ];
-
-    # `brew install`
-    brews = [
-      "asdf"
-      "gh"
-    ];
 
     # `brew install --cask`
     casks = [

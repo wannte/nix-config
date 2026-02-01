@@ -2,6 +2,8 @@
   home.packages = with pkgs; [
     # utils
     jq # A lightweight and flexible command-line JSON processor
+    git
+    gh # GitHub CLI
 
     awscli2
     saml2aws
@@ -10,5 +12,8 @@
     kubectl
     kubectx
     kubernetes-helm
+
+    # version manager
+    asdf-vm
   ];
 }
