@@ -36,6 +36,7 @@
       "raycast"
       "slack"
       "notion"
+      "ghostty"
     ];
   };
 }
