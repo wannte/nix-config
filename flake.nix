@@ -8,15 +8,6 @@
   #
   ##################################################################################################################
 
-  # the nixConfig here only affects the flake itself, not the system configuration!
-  nixConfig = {
-    substituters = [
-      # Query the mirror of USTC first, and then the official cache.
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
-    ];
-  };
-
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
@@ -50,36 +41,40 @@
     darwin,
     ...
   }: let
-    # TODO replace with your own username, system and hostname
     username = "wannte";
     useremail = "T.wannte@gmail.com";
-    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
-    hostname = "wanntes-MacBook-Air";
+    system = "aarch64-darwin";
 
-    specialArgs =
-      inputs
-      // {
-        inherit username useremail hostname;
+    mkDarwinConfig = hostname: let
+      specialArgs =
+        inputs
+        // {
+          inherit username useremail hostname;
+        };
+    in
+      darwin.lib.darwinSystem {
+        inherit system specialArgs;
+        modules = [
+          ./modules/nix-core.nix
+          ./modules/system.nix
+          ./modules/apps.nix
+
+          ./modules/host-users.nix
+
+          # home manager
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.${username} = import ./home;
+          }
+        ];
       };
   in {
-    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
-      inherit system specialArgs;
-      modules = [
-        ./modules/nix-core.nix
-        ./modules/system.nix
-        ./modules/apps.nix
-
-        ./modules/host-users.nix
-
-        # home manager
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users.${username} = import ./home;
-        }
-      ];
+    darwinConfigurations = {
+      "wanntes-MacBook-Air" = mkDarwinConfig "wanntes-MacBook-Air";
+      "wanntes-MacBook-Pro" = mkDarwinConfig "wanntes-MacBook-Pro";
     };
     # nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

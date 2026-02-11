@@ -1,6 +1,10 @@
-# please change 'hostname' to your hostname
-deploy:
-	nix build .#darwinConfigurations.wanntes-MacBook-Air.system \
-	   --extra-experimental-features 'nix-command flakes'
+HOSTNAME := $(shell hostname -s)
 
-	sudo -E ./result/sw/bin/darwin-rebuild switch --flake .#wanntes-MacBook-Air
+deploy:
+	darwin-rebuild switch --flake .#$(HOSTNAME)
+
+fmt:
+	nix fmt
+
+update:
+	nix flake update
