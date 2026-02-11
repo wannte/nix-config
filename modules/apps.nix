@@ -37,6 +37,7 @@
       "slack"
       "notion"
       "ghostty"
+      "claude"
     ];
   };
 }

@@ -56,6 +56,7 @@
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
         ApplePressAndHoldEnabled = false;
+        "com.apple.keyboard.fnState" = true;
       };
 
       # Set F18 as input source toggle shortcut (hotkey ID 61)
