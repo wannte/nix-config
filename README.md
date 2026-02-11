@@ -45,6 +45,13 @@ darwinConfigurations = {
 
 최초 실행 시 `darwin-rebuild`가 아직 없으므로 `nix run`으로 실행한다.
 
+nix-darwin이 `/etc/bashrc`, `/etc/zshrc`를 관리하므로 기존 파일을 먼저 백업한다.
+
+```bash
+sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+```
+
 ```bash
 sudo nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .
 ```
