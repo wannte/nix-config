@@ -1,4 +1,8 @@
-{username, ...}: {
+{
+  username,
+  lib,
+  ...
+}: {
   # import sub modules
   imports = [
     ./shell.nix
@@ -6,7 +10,11 @@
     ./git.nix
   ];
 
-  xdg.configFile."karabiner/karabiner.json".source = ./karabiner/karabiner.json;
+  home.activation.karabiner = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p ~/.config/karabiner
+    cp -f ${./karabiner/karabiner.json} ~/.config/karabiner/karabiner.json
+    chmod 644 ~/.config/karabiner/karabiner.json
+  '';
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
