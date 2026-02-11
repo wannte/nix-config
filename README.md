@@ -46,7 +46,7 @@ darwinConfigurations = {
 최초 실행 시 `darwin-rebuild`가 아직 없으므로 `nix run`으로 실행한다.
 
 ```bash
-nix run nix-darwin -- switch --flake .
+nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .
 ```
 
 이후부터는 `make deploy`로 적용할 수 있다.
