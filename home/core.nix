@@ -3,7 +3,9 @@
     jq
     git
     gh
+    tmux
 
+    bun
     uv
 
     awscli2
@@ -15,5 +17,7 @@
     kubernetes-helm
 
     asdf-vm
+
+    glow
   ];
 }
