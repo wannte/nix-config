@@ -14,7 +14,8 @@
   };
 
   home.shellAliases = {
+    t = "tmux";
     k = "kubectl";
-    cct = "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions";
+    cct = "if [ -z \"$TMUX\" ]; then tmux new-session -A -s claude 'CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions'; else CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions; fi";
   };
 }

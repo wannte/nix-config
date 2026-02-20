@@ -1,10 +1,13 @@
 {pkgs, ...}: {
+  programs.tmux = {
+    enable = true;
+    shortcut = "q";
+  };
+
   home.packages = with pkgs; [
     jq
     git
     gh
-    tmux
-
     bun
     uv
 
