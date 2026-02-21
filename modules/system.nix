@@ -13,16 +13,8 @@
 
     keyboard = {
       enableKeyMapping = true;
-      userKeyMapping = [
-        {
-          HIDKeyboardModifierMappingSrc = 30064771129; # Caps Lock
-          HIDKeyboardModifierMappingDst = 30064771296; # Left Control
-        }
-        {
-          HIDKeyboardModifierMappingSrc = 30064771296; # Left Control
-          HIDKeyboardModifierMappingDst = 30064771129; # Caps Lock
-        }
-      ];
+      # Caps Lock remapping is handled by Karabiner-Elements
+      # (complex modification: Caps Lock → Control + hjkl arrows)
     };
 
     defaults = {
