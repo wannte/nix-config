@@ -39,6 +39,7 @@ This is a nix-darwin + home-manager configuration for macOS (aarch64-darwin).
 
 ## Key Details
 
+- **패키지 설치 우선순위**: nix 패키지(`home/core.nix`)를 우선 사용한다. Brew cask(`modules/apps.nix`)는 nix에 패키지가 없거나 macOS 네이티브 앱(.app)이 필요한 경우 등 최후의 수단으로만 사용한다.
 - Homebrew is managed declaratively with `cleanup = "zap"` - unlisted apps get removed
 - Formatter is alejandra (run via `nix fmt`)
 - Caps Lock and Left Control are swapped via keyboard mapping

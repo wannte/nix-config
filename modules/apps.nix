@@ -39,6 +39,7 @@
       "notion"
       "ghostty"
       "claude"
+      "discord"
     ];
   };
 }
