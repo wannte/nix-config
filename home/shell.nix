@@ -9,6 +9,26 @@
     '';
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      directory = {
+        truncation_length = 3;
+        truncation_symbol = "…/";
+        truncate_to_repo = false;
+      };
+      hostname = {
+        ssh_only = true;
+        format = "[$ssh_symbol$hostname]($style) ";
+        style = "bold red";
+      };
+      username = {
+        show_always = false;
+        format = "[$user]($style)@";
+      };
+    };
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
