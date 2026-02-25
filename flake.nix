@@ -45,7 +45,7 @@
     useremail = "T.wannte@gmail.com";
     system = "aarch64-darwin";
 
-    mkDarwinConfig = hostname: let
+    mkDarwinConfig = hostname: extraModules: let
       specialArgs =
         inputs
         // {
@@ -54,27 +54,29 @@
     in
       darwin.lib.darwinSystem {
         inherit system specialArgs;
-        modules = [
-          ./modules/nix-core.nix
-          ./modules/system.nix
-          ./modules/apps.nix
+        modules =
+          [
+            ./modules/nix-core.nix
+            ./modules/system.nix
+            ./modules/apps.nix
 
-          ./modules/host-users.nix
+            ./modules/host-users.nix
 
-          # home manager
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users.${username} = import ./home;
-          }
-        ];
+            # home manager
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.${username} = import ./home;
+            }
+          ]
+          ++ extraModules;
       };
   in {
     darwinConfigurations = {
-      "wanntes-MacBook-Air" = mkDarwinConfig "wanntes-MacBook-Air";
-      "wanntes-MacBook-Pro" = mkDarwinConfig "wanntes-MacBook-Pro";
+      "wanntes-MacBook-Air" = mkDarwinConfig "wanntes-MacBook-Air" [./modules/server.nix];
+      "wanntes-MacBook-Pro" = mkDarwinConfig "wanntes-MacBook-Pro" [];
     };
     # nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
