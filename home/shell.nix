@@ -26,6 +26,22 @@
         show_always = false;
         format = "[$user]($style)@";
       };
+      git_branch = {
+        format = "[$symbol$branch(:$remote_branch)]($style) ";
+        symbol = " ";
+      };
+      git_status = {
+        format = "([$all_status$ahead_behind]($style) )";
+        conflicted = "=";
+        ahead = "⇡\${count}";
+        behind = "⇣\${count}";
+        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+        untracked = "?\${count}";
+        stashed = "*\${count}";
+        modified = "!\${count}";
+        staged = "+\${count}";
+        deleted = "✘\${count}";
+      };
     };
   };
 
@@ -37,6 +53,7 @@
   home.shellAliases = {
     t = "tmux";
     k = "kubectl";
+    cc = "claude --dangerously-skip-permissions";
     cct = "if [ -z \"$TMUX\" ]; then caffeinate -i tmux new-session 'CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions'; else caffeinate -i sh -c 'CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --dangerously-skip-permissions'; fi";
   };
 }
