@@ -27,6 +27,11 @@
       url = "github:lnl7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+
+    infra-scripts = {
+      url = "git+ssh://git@github.com/devsisters/infra-scripts";
+      flake = false;
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -50,6 +55,7 @@
         inputs
         // {
           inherit username useremail hostname;
+          inherit (inputs) infra-scripts;
         };
     in
       darwin.lib.darwinSystem {

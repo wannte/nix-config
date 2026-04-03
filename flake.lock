@@ -42,6 +42,22 @@
         "type": "github"
       }
     },
+    "infra-scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772499138,
+        "narHash": "sha256-HD0nwnBP5mZ74Qsw9Ecujmgmz8CXFU8XtD08DUFK030=",
+        "ref": "refs/heads/master",
+        "rev": "af8951874126bfb1461ccbb3672903cb032207b9",
+        "revCount": 314,
+        "type": "git",
+        "url": "ssh://git@github.com/devsisters/infra-scripts"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/devsisters/infra-scripts"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1769740369,
@@ -76,6 +92,7 @@
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
+        "infra-scripts": "infra-scripts",
         "nixpkgs": "nixpkgs",
         "nixpkgs-darwin": "nixpkgs-darwin"
       }

@@ -31,8 +31,13 @@
     kubectx
     kubernetes-helm
 
+    go
+    gopls
+
     asdf-vm
 
     glow
+
+    wireguard-tools
   ];
 }

@@ -8,6 +8,8 @@
     ./shell.nix
     ./core.nix
     ./git.nix
+    ./aws.nix
+    ./vault.nix
   ];
 
   home.activation.karabiner = lib.hm.dag.entryAfter ["writeBoundary"] ''

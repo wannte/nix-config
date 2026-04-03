@@ -39,7 +39,9 @@
       "notion"
       "ghostty"
       "claude"
+      "cmux"
       "discord"
+      "xbar"
     ];
   };
 }
